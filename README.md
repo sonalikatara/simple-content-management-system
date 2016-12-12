@@ -4,6 +4,7 @@ Steps  necessary to get the
 application up and running.
 
 * Ruby version : ruby 2.3.1p112 
+* Database : mysql2 (>= 0.3.18, < 0.5)
 
 * System dependencies
 
