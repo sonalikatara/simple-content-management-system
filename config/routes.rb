@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'demo/index'
-
+  
   match ':controller(/:action(/:id(.:format)))',
   	:via => [:get , :post]
 
