@@ -5,4 +5,7 @@ class DemoController < ApplicationController
 
   def hello
   end
+
+  def text_helpers
+  end
 end
