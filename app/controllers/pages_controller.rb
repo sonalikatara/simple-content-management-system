@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
+
+  layout false
+
   def index
-    @pages = Page.all
+    @pages = Page.sorted
   end
 
   def show
@@ -8,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = Page.new(:name => "Default")
+    @page = Page.new({:name => "Default"})
   end
 
   def create
@@ -16,7 +19,7 @@ class PagesController < ApplicationController
     # Save the object
    if @page.save
     # If save succeeds, redirect to the index action
-    flash[:notice] = "Page saved successfully."
+    flash[:notice] = "Page created successfully."
     redirect_to(:action => 'index')
    else
     # If save fails, redisplay the form so user can fix problems
@@ -39,19 +42,18 @@ class PagesController < ApplicationController
     end
   end
 
-  def destroy
-  
+  def delete
+     @page = Page.find(params[:id])
+  end
+
+  def destroy 
     page = Page.find(params[:id]).destroy
     flash[:notice] = "Page '#{page.name}' destroyed successfully."
     redirect_to(:action => 'index')
   end
 
-  def delete
-     @page = Page.find(params[:id])
-  end
-
+private
   def page_params
-    
      params.require(:page).permit(:subject_id, :name, :permalink, :position, :visible)
   end
 end

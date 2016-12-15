@@ -56,6 +56,8 @@ class SubjectsController < ApplicationController
     redirect_to(:action => 'index')
   end
 
+private
+
   def subject_params
      # same as using "params[:subject]", except that it:
      # - raises an error if :subject is not present
